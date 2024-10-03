@@ -48,3 +48,5 @@ function factorial(fact) {
 console.log(factorial(fact));
 
 // No 5
+
+console.log(1);
