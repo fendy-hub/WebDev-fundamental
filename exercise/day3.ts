@@ -110,3 +110,4 @@ console.log(array[i]);
 const input: any =  "hello";
 
 // No 11
+
