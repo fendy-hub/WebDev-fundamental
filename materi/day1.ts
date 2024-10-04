@@ -100,7 +100,7 @@ console.log(n);
 let counter: number = 2;
 
 // counter++; // increment
-counter--; // decrement
+// counter--; // decrement
 
 console.log(counter);
 
