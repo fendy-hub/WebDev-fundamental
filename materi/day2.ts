@@ -104,13 +104,13 @@ if (str === "javascript") {
 
 console.log(str === "javascript" ? "javascript" : "not javascript");
 
-console.log(
-  "typescript"
-    ? str === "javascript"
-    : str === "javascript"
-    ? "typescript"
-    : "notfound"
-);
+// console.log(
+//   "typescript"
+//     ? str === "javascript"
+//     : str === "javascript"
+//     ? "typescript"
+//     : "notfound"
+// );
 
 // LOOP STATEMENT (perulangan)
 // rangkaian intrusksi yang dilakukan berulang kali hingga kondisinya
