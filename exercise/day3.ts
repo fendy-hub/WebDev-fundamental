@@ -66,21 +66,21 @@ for (let i = 0; i < words.length; i++) {
 console.log(words.join(" "));
 
 // // No 7
-const str = "The QuiCk BrOwN Fox";
-const UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const LOWER = "abcdefghijklmnopqrstuvwxyz";
-const result = [];
+// const str = "The QuiCk BrOwN Fox";
+// const UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+// const LOWER = "abcdefghijklmnopqrstuvwxyz";
+// const result = [];
 
-for (let i = 0; i < str.length; i++) {
-  if (UPPER.indexOf(str[i]) !== -1) {
-    result.push(str[i].toLowerCase());
-  } else if (LOWER.indexOf(str[i]) !== -1) {
-    result.push(str[i].toUpperCase());
-  } else {
-    result.push(str[i]);
-  }
-}
-console.log(result.join(``));
+// for (let i = 0; i < str.length; i++) {
+//   if (UPPER.indexOf(str[i]) !== -1) {
+//     result.push(str[i].toLowerCase());
+//   } else if (LOWER.indexOf(str[i]) !== -1) {
+//     result.push(str[i].toUpperCase());
+//   } else {
+//     result.push(str[i]);
+//   }
+// }
+// console.log(result.join(``));
 
 // No 8
 const max_townums_range = (x, y) => {

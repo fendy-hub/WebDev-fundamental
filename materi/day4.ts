@@ -218,6 +218,9 @@ words3.shift();
 console.log(words3);
 
 // PUSH -> menambahkan value ke dalam array di paling akhir
+const words4: string[] = ["hello", "world"];
+words4.push("purwadhika");
+console.log(words4);
 
 // UNSHIFT -> menambahkan value ke urutan paing depan array
 const words5: string[] = ["hello", "world"];
@@ -252,7 +255,7 @@ months.splice(3, 1, "may");
 console.log(months);
 
 // SLICE -> mereturn array baru dengan value yang sudah ditentukan
-// inex start dan index end dari array tsb
+// index start dan index end dari array tsb
 // rumus: slice(startIndex, endIndex)
 
 const fruits1: string[] = ["Apple", "Banana", "Orange", "Lemon", "mango"];
