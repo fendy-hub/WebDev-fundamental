@@ -1,59 +1,186 @@
 // No 1
 class Emmployee {
   name: string;
-  totalHours: number;
+  gender: string;
+  workingHours: number;
 
-  constructor(name: string, hours: number) {
+  constructor(name: string, gender: string) {
     this.name = name;
-    this.totalHours = hours;
+    this.gender = gender;
+    this.workingHours = 0;
+  }
+
+  formatCurrency(price: number) {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      maximumFractionDigits: 0,
+    }).format(price);
   }
 }
 
 class FulltimeEmployee extends Emmployee {
-  constructor(name: string, hours: number) {
-    super(name, hours);
+  hourlyRate: number;
+  extraHourlyRate: number;
+
+  constructor(name: string, gender: string) {
+    super(name, gender);
+    this.hourlyRate = 100_000;
+    this.extraHourlyRate = 75_000;
   }
 
-  calculateSalary(): number {
-    let salary: number;
-    if (this.totalHours > 6) {
-      salary = 75000;
-    } else {
-      salary = 100000;
-    }
+  addWorkingHours(hour: number) {
+    this.workingHours += hour;
+  }
 
-    return this.totalHours * salary;
+  calculateSalary() {
+    if (this.workingHours <= 6) {
+      return {
+        name: this.name,
+        gender: this.gender,
+        hours: this.workingHours,
+        totalSalary: this.formatCurrency(this.workingHours * this.hourlyRate),
+      };
+    } else {
+      const regularHours = 6;
+      const extraHours = this.workingHours - regularHours;
+
+      return {
+        name: this.name,
+        gender: this.gender,
+        totalSalaryRegular: this.formatCurrency(regularHours * this.hourlyRate),
+        totalSalaryExtra: this.formatCurrency(
+          extraHours * this.extraHourlyRate
+        ),
+        total: this.formatCurrency(
+          regularHours * this.hourlyRate + extraHours * this.extraHourlyRate
+        ),
+      };
+    }
   }
 }
 
 class PartTimeEmployee extends Emmployee {
-  constructor(name: string, hours: number) {
-    super(name, hours);
-  }
-  calculateSalary() {
-    let salary: number;
-    if (this.totalHours > 6) {
-      salary = 30000;
-    } else {
-      salary = 50000;
-    }
+  hourlyRate: number;
+  extraHourlyRate: number;
 
-    return this.totalHours * salary;
+  constructor(name: string, gender: string) {
+    super(name, gender);
+    this.hourlyRate = 50_000;
+    this.extraHourlyRate = 30_000;
+  }
+
+  addWorkingHours(hour: number) {
+    this.workingHours += hour;
+  }
+
+  calculateSalary() {
+    if (this.workingHours <= 6) {
+      return {
+        name: this.name,
+        gender: this.gender,
+        hours: this.workingHours,
+        totalSalary: this.formatCurrency(this.workingHours * this.hourlyRate),
+      };
+    } else {
+      const regularHours = 6;
+      const extraHours = this.workingHours - regularHours;
+
+      return {
+        name: this.name,
+        gender: this.gender,
+        totalSalaryRegular: this.formatCurrency(regularHours * this.hourlyRate),
+        totalSalaryExtra: this.formatCurrency(
+          extraHours * this.extraHourlyRate
+        ),
+        total: this.formatCurrency(
+          regularHours * this.hourlyRate + extraHours * this.extraHourlyRate
+        ),
+      };
+    }
   }
 }
 
-const fullTimeEmp = new FulltimeEmployee("Karyawan1", 24);
-const fullTimeEmp1 = new PartTimeEmployee("Karyawan2", 24);
+const employee1 = new FulltimeEmployee("Fendy", "cwk");
+const employee2 = new PartTimeEmployee("Anang", "cwk");
 
-console.log(
-  `Total salary for full time ${
-    fullTimeEmp.name
-  } Rp.${fullTimeEmp.calculateSalary().toLocaleString("id-ID")}`
-);
-console.log(
-  `Total salary for part time ${
-    fullTimeEmp1.name
-  } Rp.${fullTimeEmp1.calculateSalary().toLocaleString("id-ID")}`
-);
+employee1.addWorkingHours(5);
+
+console.log(employee1.calculateSalary());
+
+employee2.addWorkingHours(6);
+
+console.log(employee2.calculateSalary());
 
 // No 2
+class Player {
+  name: string;
+  health: number;
+  power: number;
+
+  constructor(name: string, health: number = 100, power: number = 10) {
+    this.name = name;
+    this.health = health;
+    this.power = power;
+  }
+
+  hit(power: number) {
+    this.health -= power;
+  }
+
+  useItem(item: { health: number; power: number }) {
+    this.health += item.health;
+    this.power += item.power;
+  }
+
+  showStatus() {
+    return `${this.name} -> Health : ${this.health} | Power : ${this.power}`;
+  }
+}
+
+class ShootingGame {
+  player1: Player;
+  player2: Player;
+
+  getRandomItem() {
+    const health = Math.random() < 0.5 ? 0 : 10;
+    const power = Math.random() < 0.5 ? 0 : 10;
+    return { health, power };
+  }
+
+  start() {
+    while (this.player1.health > 0 && this.player2.health > 0) {
+      // show status
+      console.log(this.player1.showStatus);
+      console.log(this.player2.showStatus);
+
+      // get random item
+      // const item1 = this.getRandomItem;
+      // const item2 = this.getRandomItem;
+
+      // // use random item
+      // this.player1.useItem(item1);
+      // this.player2.useItem(item2);
+
+      // hit player
+      this.player2.hit(this.player1.power);
+      this.player1.hit(this.player2.power);
+
+      // show status
+      console.log(this.player1.showStatus());
+      console.log(this.player2.showStatus());
+    }
+
+    if (this.player1.health <= 0) {
+      return `${this.player2.name} WIN`;
+    } else {
+      return `${this.player1.name} WIN`;
+    }
+  }
+}
+
+const player1 = new Player("Fendy");
+const player2 = new Player("Joko");
+
+// const game = new ShootingGame(player1, player2);
+// console.log(game.start());
