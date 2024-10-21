@@ -1,4 +1,36 @@
 // No 1
+ function phoneNumber(input: string) {
+    if (input.length !== 12) {
+        return "Invalid phone number"
+    }
+
+    for (let i = 0; i < input.length; i++) {
+        if (input[i] < "0" || input[i] > "9") {
+
+            return "Invalid phone number"
+        }
+    }
+
+    input = "62" + input.slice(1);
+
+    let template = "(xxxx)-xxxx-xxxxx";
+
+    input.split("").forEach((item) => {
+        template = template.replace("x", item);
+    });
+
+    return template;
+ }
+
+ console.log(phoneNumber("082134453223"));
+ 
+// No 2
+class Product {
+    nama: string;
+    berat: number;
+}
+
+// No 3
 function titleToNumber(columnTitle: string): number {
     let result = 0;
     
@@ -12,16 +44,7 @@ function titleToNumber(columnTitle: string): number {
 
 console.log(titleToNumber("A"));
 
-console.log(titleToNumber("B"));
-
-console.log(titleToNumber("Z"));
-
-console.log(titleToNumber("AA"));
-
-console.log(titleToNumber("AB"));
-
-
-// No 2
+// No 4
 function singleNumber(nums: number[]): number {
     let result = 0;
     
@@ -34,6 +57,4 @@ function singleNumber(nums: number[]): number {
 
 console.log(singleNumber([2, 2, 1]));
 
-console.log(singleNumber([4, 1, 2, 1, 2]));
-
-console.log(singleNumber([1]));
+// No 5

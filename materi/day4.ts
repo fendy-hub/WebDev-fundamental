@@ -336,7 +336,7 @@ const result11 = numbers1.reduce((a, b) => a + b);
 
 console.log(result11);
 
-// INCLUDES -> mengecek value pada array ada apa tidak. Hasil retur nya adalah boolean
+// INCLUDES -> mengecek value pada array ada apa tidak. Hasil return nya adalah boolean
 const fruits6: string[] = ["Mango", "Apple", "Banana", "Orange", "Lemon"];
 
 console.log(fruits6.includes("Banana"));

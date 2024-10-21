@@ -119,8 +119,8 @@ console.log(str === "javascript" ? "javascript" : "not javascript");
 // type loop : for loop, while loop, dan do while loop
 
 // FOR LOOP -> mempunyai 3 statement
-// statement 1 : menginisialisasikan veriable dari looping itu sendiri
-// statement 2 : mendefine kondidi dari looping tersebut
+// statement 1 : menginisialisasikan variable dari looping itu sendiri
+// statement 2 : mendefine kondisi dari looping tersebut
 // statement 3 : kode yang di eksekusi diakhir setiap iterasi
 
 // syntax : for (statement 1;statement 2;statement 3)
